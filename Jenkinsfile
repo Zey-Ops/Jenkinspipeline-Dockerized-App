@@ -2,14 +2,22 @@ pipeline {
     agent { label 'master' }
 
     environment {
-        ECR_REGISTRY = ''
-
+        ECR_REGISTRY = '094879549578.dkr.ecr.us-east-1.amazonaws.com'
+        APP_REPO_NAME = 'zey-repo/phonebook-app'
+        AWS_REGION = 'us-east-1'
     }
 
     stages {
         stage('Create ECR repo') {
             steps {
                 echo 'Creating ECR Repo'
+                sh '''
+                aws ecr create-repository \
+                 --repository-name ${APP_REPO_NAME} \
+                 --image-scanning-configuration scanOnPush=false \
+                 --image-mutability MUTABLE \
+                 --region ${AWS_REGION}
+                '''
             }
         }
 
