@@ -24,6 +24,8 @@ pipeline {
         stage ('Build App Docker Images') {
             steps {
                 echo 'Build app docker images'
+                sh 'docker build --force-rm -t "${ECR_REGISTRY}/${APP_REPO_NAME}:latest" .'
+                sh 'docker image ls'
             }
         }
 
