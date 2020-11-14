@@ -6,7 +6,7 @@ pipeline {
         APP_REPO_NAME = 'zey-repo/phonebook-app'
         AWS_REGION = 'us-east-1'
         AWS_STACK_NAME = "Zey-Phonebook-App-${BUILD_NUMBER}"
-        CFN_KEYPAIR = 'zeyy.pem'
+        CFN_KEYPAIR = 'zeyy'
         HOME_FOLDER = '/home/ec2-user'
         GIT_FOLDER = sh(script:'echo ${GIT_URL} | sed "s/.*\\///;s/.git$//"', returnStdout:true).trim()
         PATH = sh(script:"echo $PATH:/usr/local/bin", returnStdout:true).trim()
