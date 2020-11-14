@@ -1,4 +1,5 @@
 pipeline {
+
     agent { label 'master' }
 
     environment {
@@ -92,7 +93,9 @@ pipeline {
                 echo "Cloning and Deploying App on Swarm using Grand Master with Instance Id: ${MASTER_INSTANCE_ID}"
                 sh 'mssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no --region ${AWS_REGION} ${MASTER_INSTANCE_ID} git clone ${GIT_URL}'
                 sleep(10)
-                sh 'mssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no --region ${AWS_REGION} ${MASTER_INSTANCE_ID} docker stack deploy --with-registry-auth -c ${HOME_FOLDER}/${GIT_FOLDER}/docker-compose.yml ${APP_NAME}'
+                sh 'mssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no --region
+                ${AWS_REGION} ${MASTER_INSTANCE_ID} docker stack deploy --with-registry-auth -c
+                ${HOME_FOLDER}/${GIT_FOLDER}/docker-compose.yml ${APP_NAME}'
             }
         }
 
@@ -102,7 +105,7 @@ pipeline {
                 script {
                     while (true) {
                         try {
-                            sh "curl -s ${MASTER_INSTANCE_PUBLIC_IP}"
+                            sh "curl -s ${MASTER_INSTANCE_PUBLIC_IP}:80"
                             echo 'Phonebook App is successfully deployed.'
                             break
                         }
