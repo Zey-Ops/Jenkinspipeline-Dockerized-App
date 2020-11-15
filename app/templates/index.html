@@ -50,13 +50,13 @@
       color: red;
     }
 
-    .sectionnote{
+    .sectionnote {
       color: rgba(190, 31, 164, 0.89);
     }
-    .footnote{
+
+    .footnote {
       color: rgba(0, 0, 255, 0.712);
     }
-
   </style>
 </head>
 
@@ -65,7 +65,7 @@
   <div><img src="https://clarusway.com/wp-content/uploads/2020/06/clarusway_logo.png" /></div>
 
   <h1>Project : Phonebook Application</h1>
-  <h2>Welcome to {{developer_name}}'s Phonebook Application</h2>
+  <h2>Welcome to Zey's Phonebook Application</h2>
   <h2 class="sectionnote">Enter a name to search</h2>
 
   <form action="#" method="post">
@@ -73,16 +73,17 @@
     <input placeholder="Keyword" type="text" name="username" id="name">
     <button type="submit">Search</button>
     {% if show_result %}
-        <h1>Result for '{{ keyword }}' </h1>
-            <ul> 
-            {% for person in persons %}
-            <li>Name: <b>{{ person['name'] }} </b>  ---- Phone Number: <b>{{ person['number'] }}</b></li>
-            {% endfor %}
-            </ul>
+    <h1>Result for '{{ keyword }}' </h1>
+    <ul>
+      {% for person in persons %}
+      <li>Name: <b>{{ person['name'] }} </b> ---- Phone Number: <b>{{ person['number'] }}</b></li>
+      {% endfor %}
+    </ul>
     {% endif %}
   </form>
 
-  <p class="footnote"><i>This app is developed in Python by <b>{{ developer_name }}</b> and deployed with Flask on AWS Cloud using Clouldformation Service.</i></p>
+  <p class="footnote"><i>This app is developed in Python by <b>Zey</b> and deployed with Flask on AWS Cloud using
+      Clouldformation Service.</i></p>
 </body>
 
 </html>
