@@ -102,7 +102,7 @@ pipeline {
                 script {
                     while (true) {
                         try {
-                            sh "curl -s ${MASTER_INSTANCE_PUBLIC_IP}:80"
+                            sh "curl -s ${MASTER_INSTANCE_PUBLIC_IP}"
                             echo 'Phonebook App is successfully deployed.'
                             break
                         }
